@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MudBlazor is pulled in transitively by Formaze. -->
+    <PackageReference Include="Formaze.Blazor.MudBlazor" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>

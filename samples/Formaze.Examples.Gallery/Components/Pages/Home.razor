@@ -1,0 +1,15 @@
+@page "/"
+
+<PageTitle>Formaze Examples</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Formaze Examples</MudText>
+<MudText Class="mb-4">
+    A small gallery of Formaze forms. Pick an example from the menu on the left.
+    Each page is a self-contained snippet you can copy into your own app.
+</MudText>
+
+<MudList T="string" Dense="true">
+    <MudListItem Href="contact-form" Icon="@Icons.Material.Filled.Mail" Text="Contact form — text, email and multiline fields" />
+    <MudListItem Href="multi-field" Icon="@Icons.Material.Filled.Tune" Text="Multi-field form — enum, bool, date and numeric fields" />
+    <MudListItem Href="admin-mode" Icon="@Icons.Material.Filled.AdminPanelSettings" Text="Admin mode — configure the form live" />
+</MudList>

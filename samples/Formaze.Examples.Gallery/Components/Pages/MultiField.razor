@@ -1,0 +1,36 @@
+@page "/multi-field"
+@rendermode InteractiveServer
+
+<PageTitle>Multi-field form</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Multi-field form</MudText>
+<MudText Class="mb-4">
+    One model exercising several editor types: a dropdown (<code>enum</code>), a numeric field
+    (<code>int</code> with <code>[Range]</code>), a checkbox (<code>bool</code>) and a date picker
+    (<code>DateOnly?</code>).
+</MudText>
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="SurveyForm"
+                      Key="survey"
+                      Model="_model"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@if (_submitted)
+{
+    <MudAlert Severity="Severity.Success" Class="mt-4">
+        @_model.FullName signed up for the @_model.Plan plan (@_model.Seats seat(s)).
+    </MudAlert>
+}
+
+@code {
+    private SurveyForm _model = new();
+    private bool _submitted;
+
+    private Task HandleSubmit(EditContext context)
+    {
+        _submitted = true;
+        return Task.CompletedTask;
+    }
+}

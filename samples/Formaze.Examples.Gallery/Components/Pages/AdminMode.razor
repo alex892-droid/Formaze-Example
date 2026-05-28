@@ -1,0 +1,29 @@
+@page "/admin-mode"
+@rendermode InteractiveServer
+
+<PageTitle>Admin mode</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Admin mode</MudText>
+<MudText Class="mb-4">
+    Set <code>EditMode="true"</code> to let an admin configure the form live. Toggle the switch
+    below: the same <code>ContactForm</code> model switches between filling the form and editing
+    its layout.
+</MudText>
+
+<MudSwitch T="bool" @bind-Value="_isAdmin" Color="Color.Primary" Class="mb-4"
+           Label="@(_isAdmin ? "Edit mode (admin)" : "Fill mode (end user)")" />
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="ContactForm"
+                      Key="contact"
+                      Model="_model"
+                      EditMode="_isAdmin"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@code {
+    private ContactForm _model = new();
+    private bool _isAdmin = true;
+
+    private Task HandleSubmit(EditContext context) => Task.CompletedTask;
+}

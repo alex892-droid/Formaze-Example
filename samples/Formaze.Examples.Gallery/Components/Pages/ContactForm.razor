@@ -1,0 +1,36 @@
+@page "/contact-form"
+@rendermode InteractiveServer
+
+<PageTitle>Contact form</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Contact form</MudText>
+<MudText Class="mb-4">
+    A basic form: a text field, an email field (via <code>[EmailAddress]</code>) and a
+    multiline message (via <code>[DataType(DataType.MultilineText)]</code>), all validated
+    with DataAnnotations.
+</MudText>
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="ContactForm"
+                      Key="contact"
+                      Model="_model"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@if (_submitted)
+{
+    <MudAlert Severity="Severity.Success" Class="mt-4">
+        Thanks, @_model.Name — we'll reply to @_model.Email.
+    </MudAlert>
+}
+
+@code {
+    private ContactForm _model = new();
+    private bool _submitted;
+
+    private Task HandleSubmit(EditContext context)
+    {
+        _submitted = true;
+        return Task.CompletedTask;
+    }
+}

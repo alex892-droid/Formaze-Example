@@ -1,3 +1,11 @@
+NOTE: This MIT license applies ONLY to the example code in this repository
+(the sample projects and documentation). It does NOT apply to the Formaze
+package itself (Formaze.Blazor.MudBlazor and its companion packages), which
+is a separate, commercial, closed-source product licensed under its own terms.
+See https://formaze.dev/checkout for Formaze licensing.
+
+---
+
 MIT License
 
 Copyright (c) 2026 Alexis Bonneau
