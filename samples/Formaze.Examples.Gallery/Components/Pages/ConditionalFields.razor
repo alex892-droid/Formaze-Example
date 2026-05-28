@@ -1,0 +1,35 @@
+@page "/conditional-fields"
+@rendermode InteractiveServer
+
+<PageTitle>Conditional fields</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Conditional fields</MudText>
+<MudText Class="mb-4">
+    Conditional visibility (new in 1.1.0) is configured in the editor, not in code: a field can
+    be shown only when another field has a given value. The rule is stored with the form config
+    (as a <code>DependsOnPropertyName</code> / <code>WhenValue</code> pair), so it survives
+    restarts and needs no redeploy.
+</MudText>
+
+<MudAlert Severity="Severity.Info" Class="mb-4">
+    Turn on edit mode, open a field's settings, set its <em>"visible when"</em> condition to depend
+    on another field, then turn edit mode off to see the rule apply as you fill the form.
+</MudAlert>
+
+<MudSwitch T="bool" @bind-Value="_isAdmin" Color="Color.Primary" Class="mb-4"
+           Label="@(_isAdmin ? "Edit mode (configure conditions)" : "Fill mode")" />
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="SurveyForm"
+                      Key="survey-conditional"
+                      Model="_model"
+                      EditMode="_isAdmin"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@code {
+    private SurveyForm _model = new();
+    private bool _isAdmin = true;
+
+    private Task HandleSubmit(EditContext context) => Task.CompletedTask;
+}

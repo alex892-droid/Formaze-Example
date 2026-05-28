@@ -22,5 +22,5 @@ public class SurveyForm
     public bool AcceptTerms { get; set; }
 
     [DataType(DataType.Date)]
-    public DateOnly? StartDate { get; set; }
+    public DateTime? StartDate { get; set; }
 }

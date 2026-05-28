@@ -1,0 +1,47 @@
+@page "/custom-renderer"
+@rendermode InteractiveServer
+@using Formaze.Blazor.Mudblazor.Data
+
+<PageTitle>Custom field renderer</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Custom field renderer</MudText>
+<MudText Class="mb-4">
+    <code>CustomFieldRenderer</code> (new in 1.1.0) lets you replace the default rendering for
+    specific fields. The fragment receives a <code>(Field, Model)</code> tuple; inspect
+    <code>Field.PropertyName</code> to decide what to render. Write nothing for a field and the
+    default MudBlazor renderer takes over. Here we render <code>FullName</code> with a custom
+    adornment and leave every other field to Formaze.
+</MudText>
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="SurveyForm"
+                      Key="survey-custom"
+                      Model="_model"
+                      CustomFieldRenderer="@RenderField"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@code {
+    private SurveyForm _model = new();
+
+    private RenderFragment<(Field Field, SurveyForm Model)> RenderField => ctx => builder =>
+    {
+        if (ctx.Field.PropertyName == nameof(SurveyForm.FullName))
+        {
+            builder.OpenComponent<MudTextField<string>>(0);
+            builder.AddAttribute(1, "Value", ctx.Model.FullName);
+            builder.AddAttribute(2, "ValueChanged",
+                EventCallback.Factory.Create<string>(this, v => ctx.Model.FullName = v));
+            builder.AddAttribute(3, "Label", "Full name");
+            builder.AddAttribute(4, "Variant", Variant.Filled);
+            builder.AddAttribute(5, "Adornment", Adornment.Start);
+            builder.AddAttribute(6, "AdornmentIcon", Icons.Material.Filled.Person);
+            builder.CloseComponent();
+            return;
+        }
+
+        // No output for other fields → Formaze's default renderer is used.
+    };
+
+    private Task HandleSubmit(EditContext context) => Task.CompletedTask;
+}

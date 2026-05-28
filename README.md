@@ -25,6 +25,8 @@ Formaze builds on top of MudBlazor, so register MudBlazor first, then Formaze:
 
 ```csharp
 // Program.cs
+using Formaze.Blazor.Mudblazor.Tools;
+
 builder.Services.AddMudServices();
 builder.Services.AddFormazeJson(options =>
 {
@@ -32,9 +34,12 @@ builder.Services.AddFormazeJson(options =>
 });
 ```
 
-Drop a form into any page by pointing the component at your model:
+Drop a form into any page by pointing the component at your model (the component lives in
+`Formaze.Blazor.Mudblazor.Components` — add it to `_Imports.razor`):
 
 ```razor
+@using Formaze.Blazor.Mudblazor.Components
+
 <FormazeComponent T="ContactForm"
                   Key="contact"
                   Model="_model"
@@ -78,10 +83,10 @@ Field editors are inferred from your model's property types and DataAnnotations:
 | `string` + `[DataType(DataType.MultilineText)]` | Textarea |
 | `int` / `decimal` / `double` … | Numeric input |
 | `bool` | Checkbox |
-| `DateTime` / `DateOnly` | Date picker |
+| `DateTime` | Date picker |
 | `enum` | Dropdown |
 
-Nullable variants of the above are supported as well.
+Nullable variants of the above are supported as well (use `DateTime?` for an optional date).
 
 ## Examples
 
@@ -94,17 +99,22 @@ dotnet run
 
 | Sample | Page | Shows |
 | --- | --- | --- |
-| Contact form | [ContactForm.razor](samples/Formaze.Examples.Gallery/Components/Pages/ContactForm.razor) | `string` / email / textarea fields with DataAnnotations validation |
+| Contact form | [BasicForm.razor](samples/Formaze.Examples.Gallery/Components/Pages/BasicForm.razor) | `string` / email / textarea fields with DataAnnotations validation |
 | Multi-field form | [MultiField.razor](samples/Formaze.Examples.Gallery/Components/Pages/MultiField.razor) | enum, bool, date and numeric fields |
 | Admin mode | [AdminMode.razor](samples/Formaze.Examples.Gallery/Components/Pages/AdminMode.razor) | `EditMode` live form configuration |
-| Custom field renderer *(coming)* | — | Overriding the rendering of a field (new in 1.1.0) |
-| Conditional fields *(coming)* | — | Show/hide fields based on other values (new in 1.1.0) |
+| Custom field renderer | [CustomRenderer.razor](samples/Formaze.Examples.Gallery/Components/Pages/CustomRenderer.razor) | Overriding the rendering of a field (new in 1.1.0) |
+| Conditional fields | [ConditionalFields.razor](samples/Formaze.Examples.Gallery/Components/Pages/ConditionalFields.razor) | Show a field based on another field's value, configured in the editor (new in 1.1.0) |
 
 The EF Core storage backend is a separate project (it registers a different store):
 
+```sh
+cd samples/Formaze.Examples.EfCore
+dotnet run
+```
+
 | Sample | Shows |
 | --- | --- |
-| EF Core store *(coming)* | Persisting definitions via `AddFormazeEfCore<TDbContext>()` |
+| [EF Core store](samples/Formaze.Examples.EfCore) | Persisting definitions in SQLite via `AddFormazeEfCore<TDbContext>()` + `modelBuilder.UseFormaze()` |
 
 ## Support
 

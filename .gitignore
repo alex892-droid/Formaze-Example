@@ -427,3 +427,12 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Local-only NuGet config pointing at a local Formaze feed (do not commit)
+nuget.config
+NuGet.config
+
+# SQLite databases created at runtime by the EF Core sample
+*.db
+*.db-shm
+*.db-wal

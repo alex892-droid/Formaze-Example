@@ -1,0 +1,31 @@
+@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>Formaze — EF Core store</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">EF Core store</MudText>
+<MudText Class="mb-4">
+    This app persists form definitions in a SQLite database via
+    <code>AddFormazeEfCore&lt;GalleryDbContext&gt;()</code>. The context calls
+    <code>modelBuilder.UseFormaze()</code> in <code>OnModelCreating</code>, which adds the
+    <code>FormazeConfigs</code> table. Toggle edit mode, change the layout, switch edit mode off —
+    Formaze auto-saves the config to the database, so it survives a restart.
+</MudText>
+
+<MudSwitch T="bool" @bind-Value="_isAdmin" Color="Color.Primary" Class="mb-4"
+           Label="@(_isAdmin ? "Edit mode" : "Fill mode")" />
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="ContactForm"
+                      Key="contact"
+                      Model="_model"
+                      EditMode="_isAdmin"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@code {
+    private ContactForm _model = new();
+    private bool _isAdmin;
+
+    private Task HandleSubmit(EditContext context) => Task.CompletedTask;
+}

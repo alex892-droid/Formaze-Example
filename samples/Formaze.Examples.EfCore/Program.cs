@@ -1,5 +1,7 @@
-using Formaze.Examples.Gallery.Components;
-using Formaze.Blazor.Mudblazor.Tools;
+using Formaze.Blazor.Mudblazor.EFCore;
+using Formaze.Examples.EfCore.Components;
+using Formaze.Examples.EfCore.Data;
+using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,16 +10,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// MudBlazor must be registered before Formaze.
 builder.Services.AddMudServices();
 
-// JSON file store (default). Omit LicenseKey to run on the Free tier.
-builder.Services.AddFormazeJson(options =>
-{
-    // options.LicenseKey = "YOUR_LICENSE_KEY";
-});
+// Register your DbContext, then point Formaze at it.
+builder.Services.AddDbContext<GalleryDbContext>(o => o.UseSqlite("Data Source=formaze.db"));
+builder.Services.AddFormazeEfCore<GalleryDbContext>();
 
 var app = builder.Build();
+
+// Create the database/schema on first run. In production, use EF Core migrations instead.
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<GalleryDbContext>().Database.EnsureCreated();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
