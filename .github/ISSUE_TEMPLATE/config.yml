@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Buy a license / pricing
+    url: https://formaze.dev/checkout
+    about: Licensing, pricing and plan questions.
+  - name: Live demo
+    url: https://formaze.dev/demo
+    about: Try Formaze in your browser before filing an issue.

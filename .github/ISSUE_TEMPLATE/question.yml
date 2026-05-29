@@ -1,0 +1,20 @@
+name: Question
+description: Ask a question about using Formaze or the examples.
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For licensing and pricing, use the links on the issue chooser instead. Use this form for usage and integration questions.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What are you trying to do, and where are you stuck?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Relevant code, model classes or configuration that would help answer the question.

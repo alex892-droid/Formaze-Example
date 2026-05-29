@@ -1,0 +1,55 @@
+name: Bug report
+description: Something isn't working as expected in Formaze or one of the examples.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in the details below so it can be reproduced quickly.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug and what you expected to happen instead.
+      placeholder: When I set EditMode="true" and ... I expected ... but instead ...
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps (or a code snippet) that reproduce the problem.
+      placeholder: |
+        1. Register Formaze with AddFormazeJson(...)
+        2. Add <FormazeComponent T="..." ... />
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: formaze-version
+    attributes:
+      label: Formaze version
+      placeholder: "1.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: dotnet-version
+    attributes:
+      label: .NET version
+      options:
+        - ".NET 8"
+        - ".NET 9"
+        - ".NET 10"
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: mudblazor-version
+    attributes:
+      label: MudBlazor version
+      placeholder: "9.2.0"
+  - type: textarea
+    id: extra
+    attributes:
+      label: Logs or screenshots
+      description: Any relevant error output, stack traces or screenshots.
