@@ -3,6 +3,14 @@
 All notable changes to **Formaze** (`Formaze.Blazor.MudBlazor`) are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## 1.2.2 — 2026-05-29
+
+### Fixed
+- **Mixed-language validation messages** — the rendered form no longer triggers the browser's native validation bubble (which appeared in the visitor's browser language) on top of the app's own messages. Only the library's validation messages are shown now.
+
+### Changed
+- **Editor's conditional-field marker** — a field shown conditionally is now flagged with a discreet "Conditional" label above it, instead of a full-width line that made the editor preview taller than the actual form. The field toolbar icons are also correctly aligned.
+
 ## 1.2.0 — 2026-05-29
 
 ### Changed

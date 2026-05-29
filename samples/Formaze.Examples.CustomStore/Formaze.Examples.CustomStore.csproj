@@ -9,7 +9,7 @@
   <ItemGroup>
     <!-- Brings Formaze.Blazor.MudBlazor (and MudBlazor) in. No companion package needed:
          the store is implemented by hand against IFormazeStore. -->
-    <PackageReference Include="Formaze.Blazor.MudBlazor" Version="1.2.0" />
+    <PackageReference Include="Formaze.Blazor.MudBlazor" Version="1.2.2" />
   </ItemGroup>
 
 </Project>

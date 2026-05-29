@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <!-- MudBlazor is pulled in transitively by Formaze. -->
-    <PackageReference Include="Formaze.Blazor.MudBlazor" Version="1.2.0" />
+    <PackageReference Include="Formaze.Blazor.MudBlazor" Version="1.2.2" />
   </ItemGroup>
 
 </Project>
