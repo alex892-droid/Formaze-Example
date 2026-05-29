@@ -4,12 +4,12 @@ namespace Formaze.Examples.EfCore.Models;
 
 public class ContactForm
 {
-    [Required]
+    [Required, Display(GroupName = "Contact")]
     public string Name { get; set; } = string.Empty;
 
-    [Required, EmailAddress]
+    [Required, EmailAddress, Display(GroupName = "Contact")]
     public string Email { get; set; } = string.Empty;
 
-    [Required, DataType(DataType.MultilineText)]
+    [Required, DataType(DataType.MultilineText), Display(GroupName = "Contact")]
     public string Message { get; set; } = string.Empty;
 }

@@ -11,16 +11,18 @@ public enum Plan
 
 public class SurveyForm
 {
-    [Required]
+    [Required, Display(GroupName = "Subscription")]
     public string FullName { get; set; } = string.Empty;
 
+    [Display(GroupName = "Subscription")]
     public Plan Plan { get; set; } = Plan.Free;
 
-    [Range(1, 1000)]
+    [Range(1, 1000), Display(GroupName = "Subscription")]
     public int Seats { get; set; } = 1;
 
+    [Display(GroupName = "Subscription")]
     public bool AcceptTerms { get; set; }
 
-    [DataType(DataType.Date)]
+    [DataType(DataType.Date), Display(GroupName = "Subscription")]
     public DateOnly? StartDate { get; set; }
 }
