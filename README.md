@@ -15,7 +15,7 @@
 
 [**Live demo**](https://formaze.dev/demo) · [**Get a license**](https://formaze.dev/checkout) · [**NuGet**](https://www.nuget.org/packages/Formaze.Blazor.MudBlazor) · [**formaze.dev**](https://formaze.dev)
 
-<img src="https://formaze.dev/images/admin-preview.png" alt="Formaze admin editor" width="820" />
+<img src="assets/hero.gif" alt="Formaze — switch between editing a form and filling it, live" width="820" />
 
 </div>
 
