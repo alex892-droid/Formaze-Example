@@ -1,0 +1,37 @@
+@page "/"
+
+<PageTitle>Formaze — custom store</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Custom store</MudText>
+<MudText Class="mb-4">
+    This app plugs Formaze into a hand-written backend via
+    <code>AddFormaze&lt;InMemoryLoggingStore&gt;()</code>. The store implements the four
+    <code>IFormazeStore</code> methods (<code>LoadAsync</code>, <code>SaveAsync</code>,
+    <code>DeleteAsync</code>, <code>ListKeysAsync</code>) over a
+    <code>ConcurrentDictionary</code> and logs each call. Swap that dictionary for Redis, Dapper,
+    a REST API or anything else and the rest of your app stays the same.
+</MudText>
+
+<MudAlert Severity="Severity.Info" Class="mb-4">
+    Toggle edit mode, rearrange the form, then switch edit mode off. Formaze calls
+    <code>SaveAsync</code> on the custom store — watch the <code>Formaze SAVE …</code> line appear
+    in the server console.
+</MudAlert>
+
+<MudSwitch T="bool" @bind-Value="_isAdmin" Color="Color.Primary" Class="mb-4"
+           Label="@(_isAdmin ? "Edit mode" : "Fill mode")" />
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="ContactForm"
+                      Key="contact"
+                      Model="_model"
+                      EditMode="_isAdmin"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@code {
+    private ContactForm _model = new();
+    private bool _isAdmin = true;
+
+    private Task HandleSubmit(EditContext context) => Task.CompletedTask;
+}

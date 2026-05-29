@@ -80,13 +80,15 @@ Field editors are inferred from your model's property types and DataAnnotations:
 | --- | --- |
 | `string` | Text input |
 | `string` + `[EmailAddress]` | Email input |
+| `string` + `[Url]` | URL input |
 | `string` + `[DataType(DataType.MultilineText)]` | Textarea |
-| `int` / `decimal` / `double` … | Numeric input |
+| `int` / `long` / `decimal` / `double` / `float` | Numeric input |
 | `bool` | Checkbox |
-| `DateTime` | Date picker |
+| `DateTime` / `DateOnly` / `DateTimeOffset` | Date picker |
+| `TimeSpan` | Time picker |
 | `enum` | Dropdown |
 
-Nullable variants of the above are supported as well (use `DateTime?` for an optional date).
+Nullable variants of the above are supported as well (use `DateTime?` or `DateOnly?` for an optional date).
 
 ## Examples
 
@@ -102,19 +104,22 @@ dotnet run
 | Contact form | [BasicForm.razor](samples/Formaze.Examples.Gallery/Components/Pages/BasicForm.razor) | `string` / email / textarea fields with DataAnnotations validation |
 | Multi-field form | [MultiField.razor](samples/Formaze.Examples.Gallery/Components/Pages/MultiField.razor) | enum, bool, date and numeric fields |
 | Admin mode | [AdminMode.razor](samples/Formaze.Examples.Gallery/Components/Pages/AdminMode.razor) | `EditMode` live form configuration |
+| All field types | [FieldTypes.razor](samples/Formaze.Examples.Gallery/Components/Pages/FieldTypes.razor) | Every inferred editor (text, email, url, textarea, number, checkbox, date, time, enum) in one model |
+| Submission handling | [SubmissionHandling.razor](samples/Formaze.Examples.Gallery/Components/Pages/SubmissionHandling.razor) | Custom `SubmitLabel` and reading the bound model in `OnValidSubmit` |
 | Custom field renderer | [CustomRenderer.razor](samples/Formaze.Examples.Gallery/Components/Pages/CustomRenderer.razor) | Overriding the rendering of a field (new in 1.1.0) |
 | Conditional fields | [ConditionalFields.razor](samples/Formaze.Examples.Gallery/Components/Pages/ConditionalFields.razor) | Show a field based on another field's value, configured in the editor (new in 1.1.0) |
 
-The EF Core storage backend is a separate project (it registers a different store):
+Storage backends that register a different store live in their own projects:
 
 ```sh
-cd samples/Formaze.Examples.EfCore
+cd samples/Formaze.Examples.EfCore     # or Formaze.Examples.CustomStore
 dotnet run
 ```
 
 | Sample | Shows |
 | --- | --- |
 | [EF Core store](samples/Formaze.Examples.EfCore) | Persisting definitions in SQLite via `AddFormazeEfCore<TDbContext>()` + `modelBuilder.UseFormaze()` |
+| [Custom store](samples/Formaze.Examples.CustomStore) | Implementing `IFormazeStore` by hand and registering it with `AddFormaze<TStore>()` |
 
 ## Support
 

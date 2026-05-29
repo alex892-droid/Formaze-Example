@@ -12,6 +12,12 @@
       "runtimeExecutable": "dotnet",
       "runtimeArgs": ["run", "--no-build", "-c", "Debug", "--project", "samples/Formaze.Examples.EfCore", "--urls", "http://localhost:5181"],
       "port": 5181
+    },
+    {
+      "name": "customstore",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--no-build", "-c", "Debug", "--project", "samples/Formaze.Examples.CustomStore", "--urls", "http://localhost:5182"],
+      "port": 5182
     }
   ]
 }

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Brings Formaze.Blazor.MudBlazor (and MudBlazor) in. No companion package needed:
+         the store is implemented by hand against IFormazeStore. -->
+    <PackageReference Include="Formaze.Blazor.MudBlazor" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>

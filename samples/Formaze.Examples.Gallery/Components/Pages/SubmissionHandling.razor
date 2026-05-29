@@ -1,0 +1,53 @@
+@page "/submission"
+
+<PageTitle>Submission handling</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Submission handling</MudText>
+<MudText Class="mb-4">
+    Customise the submit button with <code>SubmitLabel</code> and read the bound model in
+    <code>OnValidSubmit</code> — it fires only once DataAnnotations validation passes, so the
+    model is already populated and valid. Here we relabel the button "Send message" and echo the
+    captured values back.
+</MudText>
+
+@if (!_submitted)
+{
+    <MudPaper Class="pa-6" Elevation="1">
+        <FormazeComponent T="ContactForm"
+                          Key="contact"
+                          Model="_model"
+                          SubmitLabel="Send message"
+                          OnValidSubmit="HandleSubmit" />
+    </MudPaper>
+}
+else
+{
+    <MudPaper Class="pa-6" Elevation="1">
+        <MudText Typo="Typo.h6" GutterBottom="true">Received</MudText>
+        <MudSimpleTable Dense="true" Bordered="true" Style="max-width: 480px">
+            <tbody>
+                <tr><td><b>Name</b></td><td>@_model.Name</td></tr>
+                <tr><td><b>Email</b></td><td>@_model.Email</td></tr>
+                <tr><td><b>Message</b></td><td>@_model.Message</td></tr>
+            </tbody>
+        </MudSimpleTable>
+        <MudButton Class="mt-4" Variant="Variant.Outlined" OnClick="Reset">Send another</MudButton>
+    </MudPaper>
+}
+
+@code {
+    private ContactForm _model = new();
+    private bool _submitted;
+
+    private Task HandleSubmit(EditContext context)
+    {
+        _submitted = true;
+        return Task.CompletedTask;
+    }
+
+    private void Reset()
+    {
+        _model = new();
+        _submitted = false;
+    }
+}

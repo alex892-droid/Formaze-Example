@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formaze.Examples.Gallery", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formaze.Examples.EfCore", "samples\Formaze.Examples.EfCore\Formaze.Examples.EfCore.csproj", "{4213ECD7-7FD5-4996-BFA9-BC3C0BF30C67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formaze.Examples.CustomStore", "samples\Formaze.Examples.CustomStore\Formaze.Examples.CustomStore.csproj", "{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,18 @@ Global
 		{4213ECD7-7FD5-4996-BFA9-BC3C0BF30C67}.Release|x64.Build.0 = Release|Any CPU
 		{4213ECD7-7FD5-4996-BFA9-BC3C0BF30C67}.Release|x86.ActiveCfg = Release|Any CPU
 		{4213ECD7-7FD5-4996-BFA9-BC3C0BF30C67}.Release|x86.Build.0 = Release|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Debug|x64.Build.0 = Debug|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Debug|x86.Build.0 = Debug|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Release|x64.ActiveCfg = Release|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Release|x64.Build.0 = Release|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Release|x86.ActiveCfg = Release|Any CPU
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +64,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{28E50CCB-EB8B-43AB-AF1D-AD8D9930214E} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
 		{4213ECD7-7FD5-4996-BFA9-BC3C0BF30C67} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
+		{2687F3C7-D116-4A39-AEE1-ECC28C938F3B} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
 	EndGlobalSection
 EndGlobal

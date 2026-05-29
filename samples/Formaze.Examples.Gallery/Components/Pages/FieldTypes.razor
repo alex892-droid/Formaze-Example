@@ -1,0 +1,38 @@
+@page "/field-types"
+
+<PageTitle>All field types</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">All field types</MudText>
+<MudText Class="mb-4">
+    Formaze infers the right editor from each property's type and DataAnnotations — no per-field
+    configuration needed. This one model exercises every inferred editor: text, email
+    (<code>[EmailAddress]</code>), URL (<code>[Url]</code>), textarea
+    (<code>[DataType(MultilineText)]</code>), numeric (<code>int</code> / <code>decimal</code>),
+    checkbox (<code>bool</code>), dropdown (<code>enum</code>), date pickers
+    (<code>DateTime?</code> and <code>DateOnly?</code>) and a time picker (<code>TimeSpan?</code>).
+</MudText>
+
+<MudPaper Class="pa-6" Elevation="1">
+    <FormazeComponent T="AllFieldsForm"
+                      Key="all-fields"
+                      Model="_model"
+                      OnValidSubmit="HandleSubmit" />
+</MudPaper>
+
+@if (_submitted)
+{
+    <MudAlert Severity="Severity.Success" Class="mt-4">
+        Saved @_model.Name — @_model.Quantity item(s) at @_model.Price, @_model.Plan plan.
+    </MudAlert>
+}
+
+@code {
+    private AllFieldsForm _model = new();
+    private bool _submitted;
+
+    private Task HandleSubmit(EditContext context)
+    {
+        _submitted = true;
+        return Task.CompletedTask;
+    }
+}
