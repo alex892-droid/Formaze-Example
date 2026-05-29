@@ -436,3 +436,6 @@ NuGet.config
 *.db
 *.db-shm
 *.db-wal
+
+# Claude Code local files
+.claude/
