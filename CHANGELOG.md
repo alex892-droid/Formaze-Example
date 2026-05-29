@@ -3,6 +3,12 @@
 All notable changes to **Formaze** (`Formaze.Blazor.MudBlazor`) are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## 1.2.0 — 2026-05-29
+
+### Changed
+- **Free tier is now unlimited on forms** — the previous 3-form cap has been removed. The "Powered by Formaze" watermark remains the Free-tier marker.
+- **JSON configuration import/export is now Pro** — the editor's import/export buttons are reserved for Pro and Enterprise licenses.
+
 ## 1.1.0 — 2026-05-29
 
 ### Added

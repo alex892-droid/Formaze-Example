@@ -26,7 +26,7 @@
 ## Why Formaze
 
 - **No form markup to write.** You write a C# class with DataAnnotations; Formaze renders the inputs, labels, layout and validation for you.
-- **Admins own the form, not developers.** Flip `EditMode="true"` and a non-technical user can reorder fields, group them, switch column layouts and import/export the definition — live, in the browser.
+- **Admins own the form, not developers.** Flip `EditMode="true"` and a non-technical user can reorder fields, group them, switch column layouts and import/export the definition (Pro) — live, in the browser.
 - **Built on MudBlazor.** Forms inherit your MudBlazor theme and look native to your app out of the box.
 - **Bring your own storage.** JSON files, in-memory, EF Core, or a store you write yourself.
 - **Accessible by default.** Keyboard-navigable, screen-reader friendly, [WCAG 2.2 AA](#accessibility).
@@ -37,7 +37,7 @@
 
 <img src="assets/field-types.png" alt="A form auto-generated from a single C# model" width="760" />
 
-**Admins reshape it live.** Set `EditMode="true"` and the same component becomes an editor — groups, column layouts, field ordering, import/export:
+**Admins reshape it live.** Set `EditMode="true"` and the same component becomes an editor — groups, column layouts, field ordering, import/export (Pro):
 
 <img src="assets/admin-editor.png" alt="The same form in admin edit mode" width="760" />
 
