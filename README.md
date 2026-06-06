@@ -115,14 +115,22 @@ Field editors are inferred from your model's property types and DataAnnotations:
 | `string` | Text input |
 | `string` + `[EmailAddress]` | Email input |
 | `string` + `[Url]` | URL input |
+| `string` + `[Phone]` | Phone input |
+| `string` + `[DataType(DataType.Password)]` | Password input |
 | `string` + `[DataType(DataType.MultilineText)]` | Textarea |
 | `int` / `long` / `decimal` / `double` / `float` | Numeric input |
+| numeric + `[FormazeSlider]` | Slider |
+| `int` + `[FormazeRating]` | Rating (stars) |
 | `bool` | Checkbox |
 | `DateTime` / `DateOnly` / `DateTimeOffset` | Date picker |
-| `TimeSpan` | Time picker |
-| `enum` | Dropdown |
+| `TimeSpan` / `TimeOnly` | Time picker |
+| `enum` | Dropdown (autocomplete with `[FormazeSearchable]`) |
+| `List<enum>` | Multi-select |
+| `List<string>` | Tags |
+| `byte[]` / `string` + `[DataType(DataType.Upload)]` | File upload |
+| `List<T>` (complex type) | Repeating sub-form |
 
-Nullable variants of the above are supported as well (use `DateTime?` or `DateOnly?` for an optional date).
+Nullable variants of the above are supported as well (use `DateTime?` or `DateOnly?` for an optional date). Admins can also switch some renderings live in the editor — e.g. a single-select enum to radio buttons, or a multi-step (wizard) layout — without touching the model.
 
 ## Examples
 

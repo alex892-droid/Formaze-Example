@@ -3,6 +3,31 @@
 All notable changes to **Formaze** (`Formaze.Blazor.MudBlazor`) are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## 1.3.0 — 2026-06-06
+
+### Added
+- **Many new field types**, all inferred from your C# model and configurable in the editor: **phone** (`[Phone]`), **password** (`[DataType(DataType.Password)]`), **slider** (`[FormazeSlider]` on a numeric), **rating** stars (`[FormazeRating]` on an `int`), **file upload** (`byte[]`, or a `string` / `[DataType(DataType.Upload)]`), **searchable select** (autocomplete for enums, via `[FormazeSearchable]` or an editor toggle), **multi-select** (`List<enum>`), **tags** (`List<string>`), and **radio groups** (toggle a single-select enum to radio buttons in the editor).
+- **`TimeOnly` / `TimeOnly?`** properties now render as a time picker.
+- **Streaming file uploads** — a new `OnFileUpload` callback lets you stream the selected file straight to your own storage and keep only a reference (URL / id) in the model, instead of buffering it in memory.
+- **`OnInvalidSubmit`** callback on `FormazeComponent` / `FormazeRenderComponent`, raised when a submit attempt fails validation (mirrors `OnValidSubmit`).
+- **Multi-step forms (wizard)** — turn a form into a step-by-step wizard (one section per step) with a progress bar, Back/Next navigation and per-step validation, all from the editor.
+- **Repeating sections** — a `List<T>` of a complex type renders as a repeatable sub-form (e.g. order line items) with Add/Remove, min/max rows and per-row validation.
+- **Editor-driven validation** — admins can add validation rules per field without touching the model (regex, min/max value, length, text format, whole-numbers-only, date-in-future/past, item counts), plus **cross-field validation** (e.g. an end date that must be after a start date).
+- **Richer conditional logic** — visibility conditions now support operators (`=`, `≠`, `>`, `<`, contains), multiple conditions combined with AND/OR, and conditional-required. Forms saved with the old single-condition format migrate automatically.
+- **Section settings** — a per-section description and conditional visibility ("show this whole section only when…").
+- **Field width** — a per-field "Full width" toggle and a "Width (columns)" setting to span 2–4 of the section's columns.
+- **Dynamic fields reach parity** with model-backed fields — the "Create dynamic field" dialog now covers text, text area, email, URL, phone, password, number, date, time, checkbox, dropdown, radio, multi-select, tags, slider, file and rating.
+- **Localization (i18n)** — Formaze's own UI strings and the entire editor ship in **English, French, Spanish and German**, following `CultureInfo.CurrentUICulture` automatically (English fallback). No host DI setup required.
+
+### Changed
+- **Redesigned field-configuration dialog** — organised into General / Options / Validation / Logic tabs, with a live, interactive preview pane that updates as you edit.
+
+### Fixed
+- The field-configuration dialog's **"Cancel" now discards edits** instead of keeping them (it edits a detached copy and commits only on Save).
+- Text-rendered non-string properties (`Guid`, `Uri`) no longer throw at render.
+- Editor validation rules now run on **dynamic fields** too.
+- The rendered form submits through a single handler, so `OnValidSubmit` can no longer fire twice.
+
 ## 1.2.2 — 2026-05-29
 
 ### Fixed
